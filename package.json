@@ -15,7 +15,7 @@
         "dist"
     ],
     "scripts": {
-        "build": "tsc -p tsconfig.json && copyfiles -u 1 \"src/**/*.d.ts\" dist"
+        "build": "tsc -p tsconfig.json"
     },
     "keywords": [
         "Utils"
@@ -24,7 +24,6 @@
         "url": "https://github.com/DSTitan/UtiliKitty/issues"
     },
     "devDependencies": {
-        "copyfiles": "^2.4.1",
         "typescript": "^5.0.4"
     }
 }
