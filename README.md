@@ -10,15 +10,6 @@ npm i utilikitty
 
 #
 
-### List of Functions
-
--   AlternatingCase
--   ChunkNumber
--   TrimArray
--   TrimString
-
-#
-
 ```ts
 AlternatingCase();
 ```
