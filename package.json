@@ -1,0 +1,30 @@
+{
+    "name": "utili-kitty",
+    "version": "1.0.4",
+    "description": "Utility package for javascript/typescript with many utils.",
+    "author": "DSTitan",
+    "license": "ISC",
+    "homepage": "https://github.com/DSTitan/UtiliKitty#readme",
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/DSTitan/UtiliKitty.git"
+    },
+    "main": "dist/index.js",
+    "types": "dist/index.d.ts",
+    "files": [
+        "dist"
+    ],
+    "scripts": {
+        "build": "tsc -p tsconfig.json && copyfiles -u 1 \"src/**/*.d.ts\" dist"
+    },
+    "keywords": [
+        "Utils"
+    ],
+    "bugs": {
+        "url": "https://github.com/DSTitan/UtiliKitty/issues"
+    },
+    "devDependencies": {
+        "copyfiles": "^2.4.1",
+        "typescript": "^5.0.4"
+    }
+}
