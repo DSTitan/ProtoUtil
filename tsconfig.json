@@ -3,7 +3,6 @@
         "target": "ES2022",
         "module": "CommonJS",
         "outDir": "dist",
-        "removeComments": true,
         "forceConsistentCasingInFileNames": true,
         "noImplicitAny": true,
         "downlevelIteration": true,

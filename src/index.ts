@@ -1,6 +1,30 @@
-declare type TrimStringUtil = (string: string, length: number, ellipsis?: string) => string;
+declare type AlternatingCase = (text: string, inverseCase?: boolean, split?: string) => string;
+declare type ChunkNumber = (number: number, size: number) => number[];
+declare type TrimArray = (string: any[], length: number, remainderMessage?: string) => any[];
+declare type TrimString = (string: string, length: number, ellipsis?: string) => string;
 
-export const TrimString: TrimStringUtil = (string, length, ellipsis = "..."): string => (string.length > length ? `${string.substring(0, length)}${ellipsis}` : string);
-
-const Utility = { TrimString };
-export default Utility;
+/**Alternates the case of characters in a string. E.g. `Wow` to `WoW` or `wOw`*/
+export const AlternatingCase: AlternatingCase = (string, inverseCase = false, splitBy = "") =>
+    string
+        .split(splitBy)
+        .map((char) => {
+            inverseCase = !inverseCase;
+            return inverseCase ? char.toLowerCase() : char.toUpperCase();
+        })
+        .join(splitBy);
+/**Takes a number and breaks it down into smaller parts of a specified size. */
+export const ChunkNumber: ChunkNumber = (number, size) => {
+    const chunks = [];
+    if (number <= 0 || size <= 0) return [];
+    for (let i = number; i > 0; i -= size) i > size ? chunks.push(size) : chunks.push(i);
+    return chunks;
+};
+/**Trims an array to a specified length. Appends an optional remainder message to the new array, replacing `{num}` with the number of elements omitted.*/
+export const TrimArray: TrimArray = (array, length, remainderMessage) => {
+    let newArray = [];
+    array.length <= length ? (newArray = array) : (newArray = [...[...array].splice(0, length)]);
+    if (array.length > length && remainderMessage) newArray.push(remainderMessage.replace("{num}", (array.length - length).toString()));
+    return newArray;
+};
+/**Trims a string to a specified length and adds a ellipsis to the end.*/
+export const TrimString: TrimString = (string, length, ellipsis = "...") => (string.length > length ? `${string.substring(0, length)}${ellipsis}` : string);
