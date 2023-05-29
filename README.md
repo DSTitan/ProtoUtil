@@ -44,10 +44,42 @@ ChunkNumber(100, 23); // -> [ 23, 23, 23, 23, 8 ]
 #
 
 ```ts
+RandomElement();
+```
+
+Returns a random element from the provided array.
+
+```ts
+import { RandomElement } from "utilikitty";
+
+const array = ["kitty", "cat", "kitten", "meow"];
+
+RandomElement(array); // -> cat
+```
+
+#
+
+```ts
+RandomElements();
+```
+
+Returns random elements from the provided array.
+
+```ts
+import { RandomElements } from "utilikitty";
+
+const array = ["kitty", "cat", "kitten", "meow"];
+
+RandomElements(array); // -> [ 'kitty', 'cat', 'meow' ]
+```
+
+#
+
+```ts
 RandomFloat();
 ```
 
-Takes a number and breaks it down into smaller parts of a specified size.
+Returns a random float from the provided min and max.
 
 ```ts
 import { RandomFloat } from "utilikitty";
@@ -58,10 +90,10 @@ RandomFloat(1, 5); // -> 3.1556571313461994
 #
 
 ```ts
-RandomFloat();
+RandomInt();
 ```
 
-Takes a number and breaks it down into smaller parts of a specified size.
+Returns a random int from the provided min and max.
 
 ```ts
 import { RandomInt } from "utilikitty";
