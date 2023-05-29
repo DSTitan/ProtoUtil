@@ -139,6 +139,23 @@ RemoveDuplicates(array02, "id"); // -> [ { id: 1 }, { id: 2 }, { id: 3 } ]
 #
 
 ```ts
+StringifyArray();
+```
+
+Turns an array into a string with separators.
+
+```ts
+import { StringifyArray } from "utilikitty";
+
+const array = ["Cat", "Kitty", "Meow"];
+
+StringifyArray(array); // -> Cat, Kitty & Meow
+StringifyArray(array, " . ", " and "); // -> Cat . Kitty and Meow
+```
+
+#
+
+```ts
 TrimArray();
 ```
 

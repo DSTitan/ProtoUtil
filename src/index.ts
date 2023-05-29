@@ -3,7 +3,9 @@ declare type ChunkNumber = (number: number, size: number) => number[];
 declare type RandomElement = (array: any[]) => any;
 declare type RandomElements = (array: any[], count: number) => any;
 declare type RandomNumber = (min: number, max: number) => number;
+declare type RangeArray = (array: any[], from: number, to: number) => any[];
 declare type RemoveDuplicates = (array: any[], path?: string) => any[];
+declare type StringifyArray = (array: any[], sep1?: string, sep2?: string) => string;
 declare type TrimArray = (string: any[], length: number, remainderMessage?: string) => any[];
 declare type TrimString = (string: string, length: number, ellipsis?: string) => string;
 
@@ -43,7 +45,7 @@ export const RandomFloat: RandomNumber = (min, max) => (max >= min ? Math.random
 export const RandomInt: RandomNumber = (min, max) => Math.round(RandomFloat(min, max));
 
 /**Extracts a subset of elements from an array based on specified indices ` from ` and ` to `*/
-export const RangeArray = (array: any[], from: number, to: number): any[] => (from <= to ? array.slice(Math.max(from, 0), Math.min(to + 1, array.length)) : RangeArray(array, to, from).reverse());
+export const RangeArray: RangeArray = (array, from, to) => (from <= to ? array.slice(Math.max(from, 0), Math.min(to + 1, array.length)) : RangeArray(array, to, from).reverse());
 
 /**Removes all duplicate elements within an array, you can use the ` path ` argument for a property of an array of objects.*/
 export const RemoveDuplicates: RemoveDuplicates = (array, path) => {
@@ -64,8 +66,8 @@ export const RemoveDuplicates: RemoveDuplicates = (array, path) => {
     return newArr;
 };
 
-/** */
-export const StringifyArray = (array: any[], sep1: string = ", ", sep2: string = " & "): string => (array.length == 1 ? array[0] : RangeArray(array, 0, array.length - 1).join(sep1) + sep2 + array[array.length - 1]);
+/**Turns an array into a string with separators, eg ` ["Cat", "Kitty", "Meow"] ` to ` Cat, Kitty & Meow `*/
+export const StringifyArray: StringifyArray = (array, sep1 = ", ", sep2 = " & ") => (array.length == 1 ? array[0] : RangeArray(array, 0, array.length - 2).join(sep1) + sep2 + array[array.length - 1]);
 
 /**Trims an array to a specified length. Appends an optional remainder message to the new array, replacing `{num}` with the number of elements omitted.*/
 export const TrimArray: TrimArray = (array, length, remainderMessage) => {
