@@ -42,8 +42,8 @@ export const RandomFloat: RandomNumber = (min, max) => (max >= min ? Math.random
 /**Returns a random int from the provided min and max.*/
 export const RandomInt: RandomNumber = (min, max) => Math.round(RandomFloat(min, max));
 
-/** */
-export const RangeArray = (array: any[], from: number, to: number): any[] => (from <= to ? [...array].splice(Math.min(from, 0), Math.min(to - from, array.length - from)) : RangeArray(array, to, from));
+/**Extracts a subset of elements from an array based on specified indices ` from ` and ` to `*/
+export const RangeArray = (array: any[], from: number, to: number): any[] => (from <= to ? array.slice(Math.max(from, 0), Math.min(to + 1, array.length)) : RangeArray(array, to, from).reverse());
 
 /**Removes all duplicate elements within an array, you can use the ` path ` argument for a property of an array of objects.*/
 export const RemoveDuplicates: RemoveDuplicates = (array, path) => {

@@ -104,6 +104,23 @@ RandomInt(1, 5); // -> 2
 #
 
 ```ts
+RangeArray();
+```
+
+Extracts a subset of elements from an array based on specified indices `from` and `to`
+
+```ts
+import { RangeArray } from "utilikitty";
+
+const array = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
+
+RangeArray(array, 4, 6); // -> [ 5, 6, 7 ]
+RangeArray(array, 2, 7); // -> [ 3, 4, 5, 6, 7, 8 ]
+```
+
+#
+
+```ts
 RemoveDuplicates();
 ```
 
