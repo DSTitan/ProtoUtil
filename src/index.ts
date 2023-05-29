@@ -19,6 +19,24 @@ export const ChunkNumber: ChunkNumber = (number, size) => {
     for (let i = number; i > 0; i -= size) i > size ? chunks.push(size) : chunks.push(i);
     return chunks;
 };
+/**Removes all duplicate elements within an array, you can use the ` path ` argument for properties of an array of objects. */
+export const RemoveDuplicates = (array: any[], path?: string): any[] => {
+    if (array.length == 0 || array.length == 1) return array;
+    const added: any[] = [];
+    const newArr: any[] = [];
+    for (let i = 0; i < array.length; i++) {
+        if (path) {
+            const element = array[i][path];
+            if (added.includes(element)) continue;
+            added.push(element);
+            newArr.push(array[i]);
+        } else {
+            if (newArr.includes(array[i])) continue;
+            newArr.push(array[i]);
+        }
+    }
+    return newArr;
+};
 /**Trims an array to a specified length. Appends an optional remainder message to the new array, replacing `{num}` with the number of elements omitted.*/
 export const TrimArray: TrimArray = (array, length, remainderMessage) => {
     let newArray = [];
