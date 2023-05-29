@@ -1,5 +1,7 @@
 declare type AlternatingCase = (text: string, inverseCase?: boolean, split?: string) => string;
 declare type ChunkNumber = (number: number, size: number) => number[];
+declare type RandomNumber = (min: number, max: number) => number;
+declare type RemoveDuplicates = (array: any[], path?: string) => any[];
 declare type TrimArray = (string: any[], length: number, remainderMessage?: string) => any[];
 declare type TrimString = (string: string, length: number, ellipsis?: string) => string;
 
@@ -12,6 +14,7 @@ export const AlternatingCase: AlternatingCase = (string, inverseCase = false, sp
             return inverseCase ? char.toLowerCase() : char.toUpperCase();
         })
         .join(splitBy);
+
 /**Takes a number and breaks it down into smaller parts of a specified size. */
 export const ChunkNumber: ChunkNumber = (number, size) => {
     const chunks = [];
@@ -19,8 +22,15 @@ export const ChunkNumber: ChunkNumber = (number, size) => {
     for (let i = number; i > 0; i -= size) i > size ? chunks.push(size) : chunks.push(i);
     return chunks;
 };
+
+/**Returns a random float within the provided min and max */
+export const RandomFloat: RandomNumber = (min, max) => (max >= min ? Math.random() * (max - min) + min : RandomFloat(max, min));
+
+/**Returns a random int within the provided min and max */
+export const RandomInt: RandomNumber = (min, max) => Math.round(RandomFloat(min, max));
+
 /**Removes all duplicate elements within an array, you can use the ` path ` argument for a property of an array of objects. */
-export const RemoveDuplicates = (array: any[], path?: string): any[] => {
+export const RemoveDuplicates: RemoveDuplicates = (array, path) => {
     if (array.length == 0 || array.length == 1) return array;
     const added: any[] = [];
     const newArr: any[] = [];
@@ -37,6 +47,7 @@ export const RemoveDuplicates = (array: any[], path?: string): any[] => {
     }
     return newArr;
 };
+
 /**Trims an array to a specified length. Appends an optional remainder message to the new array, replacing `{num}` with the number of elements omitted.*/
 export const TrimArray: TrimArray = (array, length, remainderMessage) => {
     let newArray = [];
@@ -44,5 +55,6 @@ export const TrimArray: TrimArray = (array, length, remainderMessage) => {
     if (array.length > length && remainderMessage) newArray.push(remainderMessage.replace("{num}", (array.length - length).toString()));
     return newArray;
 };
+
 /**Trims a string to a specified length and adds a ellipsis to the end.*/
 export const TrimString: TrimString = (string, length, ellipsis = "...") => (string.length > length ? `${string.substring(0, length)}${ellipsis}` : string);

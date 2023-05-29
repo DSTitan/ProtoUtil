@@ -44,6 +44,34 @@ ChunkNumber(100, 23); // -> [ 23, 23, 23, 23, 8 ]
 #
 
 ```ts
+RandomFloat();
+```
+
+Takes a number and breaks it down into smaller parts of a specified size.
+
+```ts
+import { RandomFloat } from "utilikitty";
+
+RandomFloat(1, 5); // -> 3.1556571313461994
+```
+
+#
+
+```ts
+RandomFloat();
+```
+
+Takes a number and breaks it down into smaller parts of a specified size.
+
+```ts
+import { RandomInt } from "utilikitty";
+
+RandomInt(1, 5); // -> 2
+```
+
+#
+
+```ts
 RemoveDuplicates();
 ```
 
