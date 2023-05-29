@@ -44,6 +44,24 @@ ChunkNumber(100, 23); // -> [ 23, 23, 23, 23, 8 ]
 #
 
 ```ts
+RemoveDuplicates();
+```
+
+Removes all duplicate elements within an array, you can use the `path` argument for a property of an array of objects.
+
+```ts
+import { RemoveDuplicates } from "utilikitty";
+
+const array01 = ["cat", "kitty", "cat", "cat"];
+const array02 = [{ id: 1 }, { id: 2 }, { id: 3 }, { id: 1 }, { id: 3 }];
+
+RemoveDuplicates(array01); // -> [ 'cat', 'kitty' ]
+RemoveDuplicates(array02, "id"); // -> [ { id: 1 }, { id: 2 }, { id: 3 } ]
+```
+
+#
+
+```ts
 TrimArray();
 ```
 

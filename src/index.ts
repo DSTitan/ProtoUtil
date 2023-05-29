@@ -19,7 +19,7 @@ export const ChunkNumber: ChunkNumber = (number, size) => {
     for (let i = number; i > 0; i -= size) i > size ? chunks.push(size) : chunks.push(i);
     return chunks;
 };
-/**Removes all duplicate elements within an array, you can use the ` path ` argument for properties of an array of objects. */
+/**Removes all duplicate elements within an array, you can use the ` path ` argument for a property of an array of objects. */
 export const RemoveDuplicates = (array: any[], path?: string): any[] => {
     if (array.length == 0 || array.length == 1) return array;
     const added: any[] = [];

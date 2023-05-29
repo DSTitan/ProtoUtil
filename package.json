@@ -15,6 +15,7 @@
         "dist"
     ],
     "scripts": {
+        "start": "node ./dist/index.js",
         "build": "tsc -p tsconfig.json"
     },
     "keywords": [
